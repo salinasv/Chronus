@@ -1,0 +1,7 @@
+Chronus is a lightweight calendar application aimed to be used on any gtk
+based desktop environment.
+
+
+Actually is a bornint project it will be supposed to:
+* Support icalendar.
+* Sync with google calendar.
