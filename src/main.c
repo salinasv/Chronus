@@ -2,6 +2,35 @@
 
 #define APP_NAME_STR "Chronus"
 
+/* Menu callbacks */
+static void new_action(){}
+static void open_action(){}
+static void save_action(){}
+static void save_as_action(){}
+static void quit_action(){}
+static void help_action(){}
+
+/* Menu creation */
+static GtkActionEntry entries[] =
+{
+	{ "FileMenuAction", NULL, "_File"},
+	{ "HelpMenuAction", NULL, "_Help"},
+
+	{ "NewAction", GTK_STOCK_NEW, "_New", NULL, NULL,
+		G_CALLBACK(new_action)	},
+	{ "OpenAction", GTK_STOCK_OPEN, "_Open", NULL, NULL,
+		G_CALLBACK(open_action)},
+	{ "SaveAction", GTK_STOCK_SAVE, "_Save", NULL, NULL,
+		G_CALLBACK(save_action)},
+	{ "SaveAsAction", GTK_STOCK_SAVE, "Save _As", NULL, NULL,
+		G_CALLBACK(save_as_action)},
+	{ "QuitAction", GTK_STOCK_QUIT, "_Quit", NULL, NULL,
+		G_CALLBACK(quit_action)},
+
+	{ "HelpAction", GTK_STOCK_QUIT, "_help", NULL, NULL,
+		G_CALLBACK(help_action)}
+};
+
 void main_close()
 {
 	gtk_main_quit();
