@@ -8,7 +8,26 @@ static void open_action(){}
 static void save_action(){}
 static void save_as_action(){}
 static void quit_action(){}
-static void about_action(){}
+static void about_action()
+{
+	GtkWidget *dialog;
+	GtkWidget *vbox;
+	GtkWidget *label;
+	GtkWidget *button;
+
+	dialog = gtk_dialog_new();
+
+	vbox = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+
+	label = gtk_label_new("About dialog\n");
+	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+
+	button = gtk_button_new_from_stock(GTK_STOCK_ABOUT);
+	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+
+	gtk_widget_show_all(dialog);
+
+}
 
 /* Menu creation */
 static GtkActionEntry entries[] =
