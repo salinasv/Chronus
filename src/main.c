@@ -8,7 +8,7 @@ static void open_action(){}
 static void save_action(){}
 static void save_as_action(){}
 static void quit_action(){}
-static void help_action(){}
+static void about_action(){}
 
 /* Menu creation */
 static GtkActionEntry entries[] =
@@ -27,8 +27,8 @@ static GtkActionEntry entries[] =
 	{ "QuitAction", GTK_STOCK_QUIT, "_Quit", NULL, NULL,
 		G_CALLBACK(quit_action)},
 
-	{ "HelpAction", GTK_STOCK_QUIT, "_help", NULL, NULL,
-		G_CALLBACK(help_action)}
+	{ "AboutAction", GTK_STOCK_QUIT, "_About", NULL, NULL,
+		G_CALLBACK(about_action)}
 };
 static guint n_entries = G_N_ELEMENTS(entries);
 
