@@ -5,3 +5,16 @@ based desktop environment.
 Actually is a bornint project it will be supposed to:
 * Support icalendar.
 * Sync with google calendar.
+
+
+Codestyle:
+*Use K&R Codestyle.
+**http://en.wikipedia.org/wiki/Indent_style#K.26R_style
+*NEVER use camelCase naming.
+
+Indentation:
+*Use tab as indentation character, please, do not use spaces.
+**the code uses vim's ts=4 sw=4 noexpandtab
+
+Commit Messages:
+*Follow this recomendations: http://who-t.blogspot.com/2009/12/on-commit-messages.html
