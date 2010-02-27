@@ -7,8 +7,9 @@ static void new_action(){}
 static void open_action(){}
 static void save_action(){}
 static void save_as_action(){}
-static void quit_action(){
-	gtk_main_quit
+static void quit_action()
+{
+	gtk_main_quit();
 }
 static void about_action()
 {
