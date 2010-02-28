@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <glib.h>
 #include <gcal.h>
 
 #include "google.h"
