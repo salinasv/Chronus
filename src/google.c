@@ -1,13 +1,32 @@
 #include <stdio.h>
 #include <gcal.h>
 
-int google_login(char *username, char *password)
+#include "google.h"
+
+CalendarData* calendar_new()
 {
-	struct gcal_resource *gc_res;
+	CalendarData *cal_dat;
 
-	gc_res = gcal_construct(GCALENDAR);
+	cal_dat = g_new(CalendarData, 1);
+	
+	if (!cal_dat)
+		return NULL;
 
-	if (gcal_get_authentication(gc_res, username, password)) {
+	cal_dat->gc_res = gcal_construct(GCALENDAR);
+
+	return cal_dat;
+}
+
+void calendar_destroy(CalendarData *cal_dat)
+{
+	gcal_destroy(cal_dat->gc_res);
+	g_free(cal_dat);
+}
+
+int calendar_login(CalendarData *cal_dat, char *username, char *password)
+{
+
+	if (gcal_get_authentication(cal_dat->gc_res, username, password)) {
 		printf("Failed to autenticate\n");
 		
 		return -1;
