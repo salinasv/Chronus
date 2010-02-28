@@ -2,7 +2,7 @@
 #include <glib.h>
 #include <gcal.h>
 
-#include "google.h"
+#include "calendar.h"
 
 CalendarData* calendar_new()
 {
