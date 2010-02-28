@@ -18,3 +18,11 @@ Indentation:
 
 Commit Messages:
 *Follow this recomendations: http://who-t.blogspot.com/2009/12/on-commit-messages.html
+
+
+Dependencies:
+libgcal
+gtk2
+glib2
+libxml
+libxdg
