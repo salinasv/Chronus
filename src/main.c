@@ -1,4 +1,5 @@
 #include <gtk/gtk.h>
+#include <webkit/webkit.h>
 
 #define APP_NAME_STR "Chronus"
 
@@ -63,8 +64,9 @@ int main (int argc, char *argv[])
 {
 	GtkWidget *main_window;
 	GtkWidget *vbox;
-	GtkWidget *calendar;
 	GtkWidget *menubar;
+	GtkWidget *web_view;
+	GtkWidget *scrolled_window;
 	GtkActionGroup *action_group;
 	GtkUIManager *ui_manager;
 	GError *error = NULL;
@@ -72,6 +74,9 @@ int main (int argc, char *argv[])
 
 	gtk_init(&argc, &argv);
 
+	if(!g_thread_supported ())
+		g_thread_init (NULL);
+	
 	main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title(GTK_WINDOW(main_window),APP_NAME_STR);
 	g_signal_connect(G_OBJECT(main_window), "destroy", G_CALLBACK(main_close), NULL);
@@ -91,10 +96,11 @@ int main (int argc, char *argv[])
 	menubar = gtk_ui_manager_get_widget(ui_manager, "/MainMenu");
 
 	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
+	web_view = webkit_web_view_new();
+	webkit_web_view_load_uri (WEBKIT_WEB_VIEW(web_view),"http://calendar.google.com");
 
-	calendar = gtk_calendar_new();
-	gtk_box_pack_start(GTK_BOX(vbox), calendar, FALSE, FALSE, 0);
-
+	gtk_box_pack_start(GTK_BOX(vbox), web_view, FALSE, FALSE, 0);
+	gtk_window_set_default_size(GTK_WINDOW (main_window), 800, 600);
 	gtk_widget_show_all(main_window);
 	gtk_main();
 
