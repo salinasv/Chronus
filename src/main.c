@@ -100,6 +100,8 @@ int main (int argc, char *argv[])
 
 	gtk_box_pack_start(GTK_BOX(vbox), web_view, FALSE, FALSE, 0);
 	gtk_window_set_default_size(GTK_WINDOW (main_window), 800, 600);
+	gtk_window_add_accel_group(GTK_WINDOW(main_window),
+			gtk_ui_manager_get_accel_group(ui_manager));
 	gtk_widget_show_all(main_window);
 	gtk_main();
 
