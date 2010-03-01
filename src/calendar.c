@@ -9,7 +9,7 @@ CalendarData* calendar_new()
 	CalendarData *cal_dat;
 
 	cal_dat = g_new(CalendarData, 1);
-	
+
 	if (!cal_dat)
 		return NULL;
 
@@ -29,7 +29,7 @@ int calendar_login(CalendarData *cal_dat, char *username, char *password)
 
 	if (gcal_get_authentication(cal_dat->gc_res, username, password)) {
 		printf("Failed to autenticate\n");
-		
+
 		return -1;
 	}
 
