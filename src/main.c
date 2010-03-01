@@ -66,7 +66,6 @@ int main (int argc, char *argv[])
 	GtkWidget *vbox;
 	GtkWidget *menubar;
 	GtkWidget *web_view;
-	GtkWidget *scrolled_window;
 	GtkActionGroup *action_group;
 	GtkUIManager *ui_manager;
 	GError *error = NULL;
