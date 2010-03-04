@@ -37,4 +37,6 @@ char* config_get_password();
  */
 char* config_get_calendar_url();
 
+char* config_get_filename();
+
 #endif /* IO_H */

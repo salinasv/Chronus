@@ -21,19 +21,26 @@ void xdg_uninit()
 	g_free(handle);
 }
 
-char* config_get_user()
+char* config_get_filename()
 {
 	char *basedir;
 	char *path;
-	FILE *fd;
-	char buffer[100];
-	char *user;
 
 	basedir = xdgConfigHome(handle);
 
 	path = g_build_filename(basedir, PREFIX, CONFIG_FILE, NULL);
 
-	printf("path: %s\n", path);
+	return path;
+}
+
+char* config_get_user()
+{
+	char *path;
+	FILE *fd;
+	char buffer[100];
+	char *user;
+
+	path = config_get_filename();
 
 	/* TODO: Create the file if it doesn't exist */
 	fd = fopen(path, "r");
@@ -49,17 +56,12 @@ char* config_get_user()
 
 char* config_get_password()
 {
-	char *basedir;
 	char *path;
 	FILE *fd;
 	char buffer[100];
 	char *password;
 
-	basedir = xdgConfigHome(handle);
-
-	path = g_build_filename(basedir, PREFIX, CONFIG_FILE, NULL);
-
-	printf("path: %s\n", path);
+	path = config_get_filename();
 
 	/* TODO: Create the file if it doesn't exist */
 	fd = fopen(path, "r");
@@ -75,17 +77,12 @@ char* config_get_password()
 
 char* config_get_calendar_url()
 {
-	char *basedir;
 	char *path;
 	FILE *fd;
 	char buffer[100];
 	char *url;
 
-	basedir = xdgConfigHome(handle);
-
-	path = g_build_filename(basedir, PREFIX, CONFIG_FILE, NULL);
-
-	printf("path: %s\n", path);
+	path = config_get_filename();
 
 	/* TODO: Create the file if it doesn't exist */
 	fd = fopen(path, "r");
