@@ -1,0 +1,6 @@
+In order to use Google Calendar's CalDav support you must use this settings
+
+user: Your google account in the form of username@gmail.com.
+password: Your account password
+url: https://www.google.com/calendar/dav/<client-id>/events/
+	The <client-id> can be obtained from Calendar-> settings from Google Calendar.
