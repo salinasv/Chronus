@@ -53,7 +53,7 @@ char* config_get_password()
 	char *path;
 	FILE *fd;
 	char buffer[100];
-	char *user;
+	char *password;
 
 	basedir = xdgConfigHome(handle);
 
@@ -66,11 +66,11 @@ char* config_get_password()
 	fgets(buffer, 100, fd);
 	fgets(buffer, 100, fd);
 
-	user = g_strdup(buffer);
+	password = g_strdup(buffer);
 
 	fclose(fd);
 
-	return g_strstrip(user);
+	return g_strstrip(password);
 }
 
 char* config_get_calendar_url()
