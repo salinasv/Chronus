@@ -72,3 +72,30 @@ char* config_get_password()
 
 	return g_strstrip(user);
 }
+
+char* config_get_calendar_url()
+{
+	char *basedir;
+	char *path;
+	FILE *fd;
+	char buffer[100];
+	char *url;
+
+	basedir = xdgConfigHome(handle);
+
+	path = g_build_filename(basedir, PREFIX, CONFIG_FILE, NULL);
+
+	printf("path: %s\n", path);
+
+	/* TODO: Create the file if it doesn't exist */
+	fd = fopen(path, "r");
+	fgets(buffer, 100, fd);
+	fgets(buffer, 100, fd);
+	fgets(buffer, 100, fd);
+
+	url = g_strdup(buffer);
+
+	fclose(fd);
+
+	return g_strstrip(url);
+}

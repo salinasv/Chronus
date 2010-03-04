@@ -30,4 +30,11 @@ char* config_get_user();
  */
 char* config_get_password();
 
+/**
+ * Brings the calendar url from $XDG_CONFIG_DIR/Chronus/account
+ *
+ * @return The user calendar url. User must free this string.
+ */
+char* config_get_calendar_url();
+
 #endif /* IO_H */
