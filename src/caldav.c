@@ -58,6 +58,15 @@ static char* dav_get_uri(DavData *data)
 	return newurl;
 }
 
+void dav_error(char *module, CALDAV_RESPONSE res)
+{
+	caldav_error *error = NULL;
+
+	error = caldav_get_error(error);
+	printf("Error in %s:\n(%ld) %s\n", module?module:"", error->code, error->str);
+	caldav_free_error(error);
+}
+
 char* dav_get_displayname(DavData *data)
 {
 	char *uri;
@@ -69,8 +78,10 @@ char* dav_get_displayname(DavData *data)
 	res = caldav_get_displayname(&result, uri);
 	g_free(uri);
 
-	if (res != OK)
-		printf("Error getting displayname.\n");
+	if (res != OK) {
+		dav_error("displayname", res);
+		return NULL;
+	}
 
 	return result.msg;
 }	
