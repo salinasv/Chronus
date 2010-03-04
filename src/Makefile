@@ -4,6 +4,9 @@ CFLAGS=-Wall -ggdb `pkg-config --cflags --libs gtk+-2.0 libgcal glib-2.0 webkit-
 
 all: ../chronus ../test.bin
 
+clean:
+	rm *.o
+
 ../chronus: ${OBJECTS} main.c
 	${CC} -o ../chronus ${CFLAGS} ${OBJECTS} main.c
 

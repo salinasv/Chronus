@@ -3,3 +3,8 @@ all:
 
 test:
 	./test.bin
+
+clean:
+	rm chronus
+	rm test.bin
+	make -C src clean
