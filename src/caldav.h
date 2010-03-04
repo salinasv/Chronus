@@ -35,4 +35,13 @@ void dav_destroy(DavData *data);
  */
 char* dav_get_displayname(DavData *data);
 
+/**
+ * Test the server uri and report if it's valid or not.
+ *
+ * @param data 	DavData object with the uri info.
+ *
+ * @return 1 if data have a valid uri
+ */
+int dav_is_valid_server(DavData *data);
+
 #endif /* CALDAV_H */

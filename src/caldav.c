@@ -67,6 +67,19 @@ void dav_error(char *module, CALDAV_RESPONSE res)
 	caldav_free_error(error);
 }
 
+int dav_is_valid_server(DavData *data)
+{
+	char *uri;
+	int valid;
+
+	uri = dav_get_uri(data);
+	valid = caldav_enabled_resource(uri);
+
+	g_free(uri);
+	
+	return valid;
+}
+
 char* dav_get_displayname(DavData *data)
 {
 	char *uri;
