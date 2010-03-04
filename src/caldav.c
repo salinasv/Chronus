@@ -49,7 +49,7 @@ static char* dav_get_uri(DavData *data)
 	else {
 	    protocol = g_strdup("http://");
 	}
-	if (!pwd)
+	if (!data->password)
 		newurl = g_strdup_printf("%s%s@%s", protocol, data->user, uri);
 	else
 		newurl = g_strdup_printf("%s%s:%s@%s", protocol, data->user, data->password, uri);
