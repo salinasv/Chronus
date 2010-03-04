@@ -26,4 +26,13 @@ DavData* dav_new(const char *user, const char *password, const char *url);
  */
 void dav_destroy(DavData *data);
 
+/**
+ * Brings the Calendar's displayname.
+ *
+ * @param data 	The DavData used to get name.
+ *
+ * @return 		The Calendar display name in a string. The user must free it.
+ */
+char* dav_get_displayname(DavData *data);
+
 #endif /* CALDAV_H */
