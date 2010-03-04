@@ -1,6 +1,8 @@
 #include <libcaldav-0.4.0/caldav.h>
+#include <glib.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "caldav.h"
 
