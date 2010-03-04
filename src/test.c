@@ -49,8 +49,69 @@ void test_dav_api()
 	dav_destroy(data);
 }
 
+void test_io_config_get_filename()
+{
+	char *file;
+
+	file = config_get_filename();
+
+	printf("Config Filename: %s\n", file);
+	
+	g_free(file);
+}
+
+void test_io_config_get_user()
+{
+	char *user;
+
+	user = config_get_user();
+
+	printf("user: %s\n", user);
+	
+	g_free(user);
+}
+
+void test_io_config_get_password()
+{
+	char *password;
+
+	password = config_get_password();
+
+	printf("password: %s\n", password);
+	
+	g_free(password);
+}
+
+void test_io_config_get_url()
+{
+	char *url;
+
+	url = config_get_calendar_url();
+
+	printf("url: %s\n", url);
+	
+	g_free(url);
+}
+
+
+void test_io_api()
+{
+
+	xdg_init();
+	
+	test_io_config_get_filename();
+	test_io_config_get_user();
+	test_io_config_get_password();
+	test_io_config_get_url();
+
+	xdg_uninit();
+}
+
 int main()
 {
+	printf("Testing IO API\n");
+	test_io_api();
+
 	printf("Testing CALDAV support\n");
 	test_dav_api();
 
