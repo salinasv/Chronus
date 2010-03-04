@@ -1,10 +1,10 @@
 #ifndef CALDAV_H
 #define CALDAV_H
 
-typedef _DavData
+typedef struct _DavData
 {
 	char *user;
-	char *passw;
+	char *password;
 	char *url;
 }DavData;
 
