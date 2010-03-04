@@ -22,6 +22,6 @@ DavData* dav_new(const char *user, const char *password, const char *url);
  *
  * @param data 	The object to be destroyed.
  */
-void dav_destroy(DavData *data)
+void dav_destroy(DavData *data);
 
 #endif /* CALDAV_H */
