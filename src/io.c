@@ -43,7 +43,7 @@ char* config_get_user()
 
 	fclose(fd);
 
-	return user;
+	return g_strstrip(user);
 
 }
 
@@ -70,5 +70,5 @@ char* config_get_password()
 
 	fclose(fd);
 
-	return user;
+	return g_strstrip(user);
 }
