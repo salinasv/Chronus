@@ -14,6 +14,8 @@ typedef struct _DavData
  * @param user 		The user to be used to authenticate.
  * @param password 	The password to be used to authenticate.
  * @param url 		The calendar provided url.
+ *
+ * @return 			A DavData object.
  */
 DavData* dav_new(const char *user, const char *password, const char *url);
 
