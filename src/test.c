@@ -29,6 +29,8 @@ void test_dav_api()
 	char *password;
 	char *url;
 
+	printf("\n**Testing CALDAV support\n");
+
 	xdg_init();
 	user = config_get_user();
 	password = config_get_password();
@@ -93,10 +95,10 @@ void test_io_config_get_url()
 	g_free(url);
 }
 
-
 void test_io_api()
 {
 
+	printf("\n**Testing IO API\n");
 	xdg_init();
 	
 	test_io_config_get_filename();
@@ -109,10 +111,8 @@ void test_io_api()
 
 int main()
 {
-	printf("Testing IO API\n");
+	printf("*Testing API\n");
 	test_io_api();
-
-	printf("Testing CALDAV support\n");
 	test_dav_api();
 
 	return 0;
