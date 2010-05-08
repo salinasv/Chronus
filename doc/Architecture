@@ -1,0 +1,24 @@
+This is the first draft of Chronus architecture so it's a RFC.
+
+1 Modules
+
+There must be three main modules working in some kind of client-server mode
+being them the Chronos data server, Chronos GUI and CLI.
+
+1.1 Chronos Data server
+It must be a daemon, so it's always available. It stores data and accept dbus
+connections from any client, being it the CLI, calendar applets, or the main
+GUI.
+
+1.2 Chronos GUI
+The main Chronos Graphical interface.
+
+1.3 Chronos CLI client
+It's an easy CLI client to Chronos data server, It can be used to request or
+add information without the need of a X11 environment.
+
+2 Communication
+
+The communication between each front end and the Chronos Data Server will be
+done through dbus using some standard API (we need to take a look at fdo to
+find something there or create a new one that must be purposed to fdo).
