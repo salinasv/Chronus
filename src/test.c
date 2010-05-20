@@ -68,6 +68,8 @@ void test_dav_api()
 	DavData *data;
 
 	printf("\n**Testing CALDAV support\n");
+
+	data = get_davData_object();
 	
 	test_dav_valid(data);
 	test_dav_displayname(data);
