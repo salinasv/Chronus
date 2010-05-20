@@ -44,4 +44,13 @@ char* dav_get_displayname(DavData *data);
  */
 int dav_is_valid_server(DavData *data);
 
+/**
+ * Brings the Calendar data
+ *
+ * @param data 	The DavData used to get the calendar data.
+ *
+ * @return 		The calendar data in a string. The user must free it.
+ */
+char* dav_getall_object(DavData *data);
+
 #endif /* CALDAV_H */

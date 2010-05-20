@@ -98,3 +98,22 @@ char* dav_get_displayname(DavData *data)
 
 	return result.msg;
 }	
+
+char* dav_getall_object(DavData *data)
+{
+	char *uri;
+	response result;
+	CALDAV_RESPONSE res = UNKNOWN;
+
+	uri = dav_get_uri(data);
+
+	res = caldav_getall_object(&result, uri);
+	g_free(uri);
+
+	if (res != OK) {
+		dav_error("displayname", res);
+		return NULL;
+	}
+
+	return result.msg;
+}

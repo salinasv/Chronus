@@ -22,6 +22,16 @@ void test_dav_valid(DavData *data)
 	printf("[%d]%s\n", valid, valid?"Valid server":"Invalid Server");
 }
 
+void test_dav_getall_object(DavData *data)
+{
+	char *cal;
+
+	cal = dav_getall_object(data);
+	printf("CalendarData:\n%s\n", cal);
+
+	g_free(cal);
+}
+
 void test_dav_api()
 {
 	DavData *data;
@@ -47,6 +57,7 @@ void test_dav_api()
 	
 	test_dav_valid(data);
 	test_dav_displayname(data);
+	test_dav_getall_object(data);
 
 	dav_destroy(data);
 }
