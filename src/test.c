@@ -4,6 +4,37 @@
 #include "caldav.h"
 #include "io.h"
 
+/**********************************************************
+ * Util
+ *********************************************************/
+
+DavData* get_davData_object()
+{
+	DavData *data;
+	char *user;
+	char *password;
+	char *url;
+
+	xdg_init();
+	user = config_get_user();
+	password = config_get_password();
+	url = config_get_calendar_url();
+	xdg_uninit();
+	
+	data = dav_new(user,
+			password,
+			url);
+	
+	g_free(user);
+	g_free(password);
+	g_free(url);
+
+	return data;
+}
+
+/**********************************************************
+ * Dav Test
+ *********************************************************/
 void test_dav_displayname(DavData *data)
 {
 	char *name;
@@ -35,25 +66,8 @@ void test_dav_getall_object(DavData *data)
 void test_dav_api()
 {
 	DavData *data;
-	char *user;
-	char *password;
-	char *url;
 
 	printf("\n**Testing CALDAV support\n");
-
-	xdg_init();
-	user = config_get_user();
-	password = config_get_password();
-	url = config_get_calendar_url();
-	xdg_uninit();
-	
-	data = dav_new(user,
-			password,
-			url);
-	
-	g_free(user);
-	g_free(password);
-	g_free(url);
 	
 	test_dav_valid(data);
 	test_dav_displayname(data);
@@ -62,6 +76,9 @@ void test_dav_api()
 	dav_destroy(data);
 }
 
+/**********************************************************
+ * IO Test
+ *********************************************************/
 void test_io_config_get_filename()
 {
 	char *file;
