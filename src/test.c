@@ -15,11 +15,9 @@ DavData* get_davData_object()
 	char *password;
 	char *url;
 
-	xdg_init();
 	user = config_get_user();
 	password = config_get_password();
 	url = config_get_calendar_url();
-	xdg_uninit();
 	
 	data = dav_new(user,
 			password,
@@ -129,21 +127,23 @@ void test_io_api()
 {
 
 	printf("\n**Testing IO API\n");
-	xdg_init();
 	
 	test_io_config_get_filename();
 	test_io_config_get_user();
 	test_io_config_get_password();
 	test_io_config_get_url();
 
-	xdg_uninit();
 }
 
 int main()
 {
 	printf("*Testing API\n");
+
+	xdg_init();
+
 	test_io_api();
 	test_dav_api();
 
+	xdg_uninit();
 	return 0;
 }
