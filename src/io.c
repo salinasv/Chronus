@@ -1,5 +1,7 @@
 #include <basedir.h>
+#include <basedir_fs.h>
 #include <stdio.h>
+#include <sys/stat.h>
 
 #include <glib.h>
 
@@ -11,8 +13,36 @@ struct xdgHandle *handle;
 
 void xdg_init()
 {
+	const char *basedir;
+	char *path;
+	struct stat buf;
+	mode_t process_mask;
+
 	handle = g_new(xdgHandle, 1);
 	handle = xdgInitHandle(handle);
+
+	/* check if we have the required path */
+	basedir = xdgConfigHome(handle);
+	path = g_build_filename(basedir, PREFIX, NULL);
+	printf("Config dir:%s\n", path);
+
+	if (stat(path, &buf)) {
+		xdgMakePath(path, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+		printf("Creating Config dir: %s\n", path);
+	}
+
+	g_free(path);
+
+	basedir = xdgDataHome(handle);
+	path = g_build_filename(basedir, PREFIX, NULL);
+	printf("Data dir:%s\n", path);
+
+	if (stat(path, &buf)) {
+		xdgMakePath(path, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+		printf("Creating Data dir: %s\n", path);
+	}
+
+	g_free(path);
 }
 
 void xdg_uninit()
