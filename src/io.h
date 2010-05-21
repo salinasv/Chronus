@@ -39,4 +39,6 @@ char* config_get_calendar_url();
 
 char* config_get_filename();
 
+void data_write_new_file(char *filename, char *data);
+
 #endif /* IO_H */

@@ -123,8 +123,23 @@ void test_io_config_get_url()
 	g_free(url);
 }
 
+void test_io_data_write_new_file(DavData *dav_data)
+{
+	char *name;
+	char *data;
+
+	printf("Write new file.\n");
+
+	name = dav_get_displayname(dav_data);
+	data = dav_getall_object(dav_data);
+
+	data_write_new_file(name, data);
+
+}
+
 void test_io_api()
 {
+	DavData *dav_data;
 
 	printf("\n**Testing IO API\n");
 	
@@ -132,6 +147,12 @@ void test_io_api()
 	test_io_config_get_user();
 	test_io_config_get_password();
 	test_io_config_get_url();
+
+	dav_data = get_davData_object();
+
+	test_io_data_write_new_file(dav_data);
+
+	dav_destroy(dav_data);
 
 }
 

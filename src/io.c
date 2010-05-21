@@ -1,6 +1,8 @@
 #include <basedir.h>
 #include <basedir_fs.h>
+#include <errno.h>
 #include <stdio.h>
+
 #include <sys/stat.h>
 
 #include <glib.h>
@@ -125,4 +127,36 @@ char* config_get_calendar_url()
 	fclose(fd);
 
 	return g_strstrip(url);
+}
+
+char* data_get_path(const char *filename)
+{
+	char *basedir;
+	char *path;
+
+	basedir = xdgDataHome(handle);
+	path = g_build_filename(basedir, PREFIX, filename, NULL);
+	
+	return path;
+}
+
+void data_write_new_file(char *filename, char *data)
+{
+	FILE *fd;
+	char *path;
+
+	path = data_get_path(filename);
+	fd = fopen(path, "w+");
+	g_free(path);
+
+	
+	if (!fd) {
+		printf("Error opening file. %d\n", errno);
+		return;
+	}
+
+	if (!fputs(data, fd))
+		printf("Error writing file.\n");
+
+	fclose(fd);
 }
