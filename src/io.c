@@ -27,7 +27,7 @@ void xdg_init()
 	printf("Config dir:%s\n", path);
 
 	if (stat(path, &buf)) {
-		xdgMakePath(path, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+		xdgMakePath(path, S_IRWXU | S_IRWXG);
 		printf("Creating Config dir: %s\n", path);
 	}
 
@@ -38,7 +38,7 @@ void xdg_init()
 	printf("Data dir:%s\n", path);
 
 	if (stat(path, &buf)) {
-		xdgMakePath(path, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+		xdgMakePath(path, S_IRWXU | S_IRWXG);
 		printf("Creating Data dir: %s\n", path);
 	}
 
