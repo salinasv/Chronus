@@ -74,8 +74,14 @@ char* config_get_user()
 
 	path = config_get_filename();
 
-	/* TODO: Create the file if it doesn't exist */
 	fd = fopen(path, "r");
+
+	/* TODO: Create the file if it doesn't exist */
+	if (!fd) {
+		printf("There is not config file %d\n", errno);
+		return;
+	}
+
 	fgets(buffer, 100, fd);
 
 	user = g_strdup(buffer);
