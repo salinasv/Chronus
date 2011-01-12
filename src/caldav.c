@@ -14,6 +14,7 @@ DavData* dav_new(const char *user, const char *password, const char *url)
 	data->user = g_strdup(user);
 	data->password = g_strdup(password);
 	data->url = g_strdup(url);
+	data->info = get_runtime_info();
 
 	return data;
 }
@@ -23,6 +24,7 @@ void dav_destroy(DavData *data)
 	g_free(data->user);
 	g_free(data->password);
 	g_free(data->url);
+	caldav_free_response(&(data->info));
 
 	g_free(data);
 }
