@@ -1,6 +1,8 @@
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
 
+#include "menu.h"
+
 #define APP_NAME_STR "Chronus"
 
 /* Menu callbacks */
@@ -89,7 +91,7 @@ int main (int argc, char *argv[])
 
 	ui_manager = gtk_ui_manager_new();
 	gtk_ui_manager_insert_action_group(ui_manager, action_group, 0);
-	ui_id = gtk_ui_manager_add_ui_from_file(ui_manager, "src/menu.xml", &error);
+	ui_id = gtk_ui_manager_add_ui_from_string(ui_manager, MENU_MAIN,-1, &error);
 	if (error)
 		printf("error %d: %s", error->code, error->message);
 	menubar = gtk_ui_manager_get_widget(ui_manager, "/MainMenu");
