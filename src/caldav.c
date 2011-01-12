@@ -74,7 +74,7 @@ int dav_is_valid_server(DavData *data)
 	int valid;
 
 	uri = dav_get_uri(data);
-	valid = caldav_enabled_resource(uri);
+	valid = caldav_enabled_resource(uri, data->info);
 
 	g_free(uri);
 	
@@ -89,7 +89,7 @@ char* dav_get_displayname(DavData *data)
 
 	uri = dav_get_uri(data);
 
-	res = caldav_get_displayname(&result, uri);
+	res = caldav_get_displayname(&result, uri, data->info);
 	g_free(uri);
 
 	if (res != OK) {
@@ -108,7 +108,7 @@ char* dav_getall_object(DavData *data)
 
 	uri = dav_get_uri(data);
 
-	res = caldav_getall_object(&result, uri);
+	res = caldav_getall_object(&result, uri, data->info);
 	g_free(uri);
 
 	if (res != OK) {
