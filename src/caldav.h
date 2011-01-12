@@ -1,11 +1,14 @@
 #ifndef CALDAV_H
 #define CALDAV_H
 
+#include <libcaldav-0.6.2/caldav.h>
+
 typedef struct _DavData
 {
 	char *user;
 	char *password;
 	char *url;
+	runtime_info *info;
 }DavData;
 
 /**

@@ -1,4 +1,3 @@
-#include <libcaldav-0.6.2/caldav.h>
 #include <glib.h>
 #include <stdio.h>
 #include <stdlib.h>
