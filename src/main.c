@@ -2,6 +2,7 @@
 #include <webkit/webkit.h>
 
 #include "menu.h"
+#include "todo.h"
 
 #define APP_NAME_STR "Chronus"
 
@@ -59,6 +60,7 @@ static guint n_entries = G_N_ELEMENTS(entries);
 
 void main_close()
 {
+	todo_uninit();
 	gtk_main_quit();
 }
 
@@ -77,6 +79,8 @@ int main (int argc, char *argv[])
 
 	if(!g_thread_supported ())
 		g_thread_init (NULL);
+
+	todo_init();
 	
 	main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title(GTK_WINDOW(main_window),APP_NAME_STR);
@@ -97,9 +101,13 @@ int main (int argc, char *argv[])
 	menubar = gtk_ui_manager_get_widget(ui_manager, "/MainMenu");
 
 	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
+#if 0
 	web_view = webkit_web_view_new();
 	webkit_web_view_load_uri (WEBKIT_WEB_VIEW(web_view),"http://calendar.google.com");
 
+	gtk_box_pack_start(GTK_BOX(vbox), web_view, FALSE, FALSE, 0);
+#endif
+	web_view = todo_get_widget();
 	gtk_box_pack_start(GTK_BOX(vbox), web_view, FALSE, FALSE, 0);
 	gtk_window_set_default_size(GTK_WINDOW (main_window), 800, 600);
 	gtk_window_add_accel_group(GTK_WINDOW(main_window),
