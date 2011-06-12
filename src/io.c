@@ -102,6 +102,11 @@ char* config_get_password()
 	path = config_get_filename();
 
 	/* TODO: Create the file if it doesn't exist */
+	if (!fd) {
+		printf("There is not config file %d\n", errno);
+		return NULL;
+	}
+
 	fd = fopen(path, "r");
 	fgets(buffer, 100, fd);
 	fgets(buffer, 100, fd);
@@ -123,6 +128,11 @@ char* config_get_calendar_url()
 	path = config_get_filename();
 
 	/* TODO: Create the file if it doesn't exist */
+	if (!fd) {
+		printf("There is not config file %d\n", errno);
+		return NULL;
+	}
+
 	fd = fopen(path, "r");
 	fgets(buffer, 100, fd);
 	fgets(buffer, 100, fd);
