@@ -7,7 +7,10 @@
 #define APP_NAME_STR "Chronus"
 
 /* Menu callbacks */
-static void new_action(){}
+static void new_action()
+{
+	todo_add_task_dialog();
+}
 static void open_action(){}
 static void save_action(){}
 static void save_as_action(){}
