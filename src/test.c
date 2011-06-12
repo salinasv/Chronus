@@ -3,6 +3,7 @@
 
 #include "caldav.h"
 #include "io.h"
+#include "menu.h"
 
 /**********************************************************
  * Util
@@ -96,6 +97,11 @@ void test_io_config_get_user()
 
 	user = config_get_user();
 
+	if (!user) {
+		printf("Error getting the user.\n");
+		return;
+	}
+
 	printf("user: %s\n", user);
 	
 	g_free(user);
@@ -107,6 +113,11 @@ void test_io_config_get_password()
 
 	password = config_get_password();
 
+	if (!password) {
+		printf("Error getting the password.\n");
+		return;
+	}
+
 	printf("password: %s\n", password);
 	
 	g_free(password);
@@ -117,6 +128,11 @@ void test_io_config_get_url()
 	char *url;
 
 	url = config_get_calendar_url();
+
+	if (!url) {
+		printf("Error getting the URL.\n");
+		return;
+	}
 
 	printf("url: %s\n", url);
 	
@@ -166,5 +182,6 @@ int main()
 	test_dav_api();
 
 	xdg_uninit();
+
 	return 0;
 }
