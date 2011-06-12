@@ -79,7 +79,7 @@ char* config_get_user()
 	/* TODO: Create the file if it doesn't exist */
 	if (!fd) {
 		printf("There is not config file %d\n", errno);
-		return;
+		return NULL;
 	}
 
 	fgets(buffer, 100, fd);
